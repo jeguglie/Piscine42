@@ -1,0 +1,5 @@
+Credentials cache: API:27F27592-369C-430F-B863-637FB9441C98
+        Principal: jeguglie@42.FR
+
+  Issued                Expires               Principal
+Aug 27 09:56:44 2018  Sep  3 09:56:44 2018  krbtgt/42.FR@42.FR
