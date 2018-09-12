@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_sudoku.c                                     :+:      :+:    :+:   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeguglie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/09 12:28:53 by jeguglie          #+#    #+#             */
-/*   Updated: 2018/09/09 12:28:55 by jeguglie         ###   ########.fr       */
+/*   Created: 2018/09/05 07:30:47 by jeguglie          #+#    #+#             */
+/*   Updated: 2018/09/10 19:44:46 by jeguglie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_putchar(char c);
-
-void	print_sudoku(char *tab)
+int		ft_ultimate_range(int **range, int min, int max)
 {
-	int i;
+	int		i;
+	int		nb;
 
-	i = -1;
-	while (tab[++i])
+	nb = min;
+	i = 0;
+	if (min >= max)
 	{
-		ft_putchar(tab[i]);
-		if (i < 8)
-			write(1, " ", 1);
+		range = 0;
+		return (0);
 	}
-	write(1, "\n", 1);
+	if (!(*range = (int *)malloc(sizeof(*range) * (1))))
+		return (0);
+	if (!(range[0] = (int *)malloc(sizeof(*range) * ((max - min)))))
+		return (0);
+	while (nb < max)
+	{
+		range[0][i] = nb;
+		nb++;
+		i++;
+	}
+	return (max - min);
 }

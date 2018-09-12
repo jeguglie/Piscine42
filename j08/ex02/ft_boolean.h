@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_sudoku.c                                     :+:      :+:    :+:   */
+/*   ft_boolean.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeguglie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/09 12:28:53 by jeguglie          #+#    #+#             */
-/*   Updated: 2018/09/09 12:28:55 by jeguglie         ###   ########.fr       */
+/*   Created: 2018/09/11 06:27:44 by jeguglie          #+#    #+#             */
+/*   Updated: 2018/09/11 06:55:23 by jeguglie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef FT_BOOLEAN_H
+# define FT_BOOLEAN_H
 
-void	ft_putchar(char c);
+# define TRUE 1
+# define FALSE 0
+# define ODD_MSG "I have an odd number of arguments.\n"
+# define EVEN_MSG "I have an even number of arguments.\n"
+# define SUCCESS 0
+# define EVEN(nbr) nbr % 2 == 0
+# define T_BOOL int
+# include <unistd.h>
 
-void	print_sudoku(char *tab)
-{
-	int i;
-
-	i = -1;
-	while (tab[++i])
-	{
-		ft_putchar(tab[i]);
-		if (i < 8)
-			write(1, " ", 1);
-	}
-	write(1, "\n", 1);
-}
+#endif

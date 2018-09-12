@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_sudoku.c                                     :+:      :+:    :+:   */
+/*   check_horizontally.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeguglie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/09 12:28:53 by jeguglie          #+#    #+#             */
-/*   Updated: 2018/09/09 12:28:55 by jeguglie         ###   ########.fr       */
+/*   Created: 2018/09/09 12:26:21 by jeguglie          #+#    #+#             */
+/*   Updated: 2018/09/09 12:29:23 by jeguglie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c);
-
-void	print_sudoku(char *tab)
+int		check_horizontally(char *tab)
 {
 	int i;
+	int j;
 
-	i = -1;
-	while (tab[++i])
+	j = -1;
+	i = j + 1;
+	while (tab[++j])
 	{
-		ft_putchar(tab[i]);
-		if (i < 8)
-			write(1, " ", 1);
+		while (tab[++i])
+		{
+			if (tab[j] == tab[i] && (tab[j] >= '0' && tab[i] <= '9'))
+				return (0);
+		}
+		i = j + 1;
 	}
-	write(1, "\n", 1);
+	return (1);
 }
+
+// Check si le meme nombre est présent horizontalement.
+// Retourne 1 si elle trouve aucune erreur.

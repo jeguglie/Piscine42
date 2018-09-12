@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_sudoku.c                                     :+:      :+:    :+:   */
+/*   ft_stock_par.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeguglie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/09 12:28:53 by jeguglie          #+#    #+#             */
-/*   Updated: 2018/09/09 12:28:55 by jeguglie         ###   ########.fr       */
+/*   Created: 2018/09/11 10:30:14 by jeguglie          #+#    #+#             */
+/*   Updated: 2018/09/12 17:24:20 by jeguglie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef FT_STOCK_PAR_H
+# define FT_STOCK_PAR_H
 
-void	ft_putchar(char c);
-
-void	print_sudoku(char *tab)
+void				ft_putchar(char c);
+void				ft_putstr(char *str);
+void				ft_print_words_tables(char **tab);
+void				ft_putnbr(int nb);
+char				**ft_split_whitespaces(char *str);
+struct s_stock_par	*ft_param_to_tab(int ac, char **av);
+typedef	struct		s_stock_par
 {
-	int i;
+	int				size_params;
+	char			*str;
+	char			*copy;
+	char			**tab;
+}					t_stock_par;
 
-	i = -1;
-	while (tab[++i])
-	{
-		ft_putchar(tab[i]);
-		if (i < 8)
-			write(1, " ", 1);
-	}
-	write(1, "\n", 1);
-}
+#endif

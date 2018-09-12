@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_sudoku.c                                     :+:      :+:    :+:   */
+/*   match.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeguglie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/09 12:28:53 by jeguglie          #+#    #+#             */
-/*   Updated: 2018/09/09 12:28:55 by jeguglie         ###   ########.fr       */
+/*   Created: 2018/09/09 21:46:01 by jeguglie          #+#    #+#             */
+/*   Updated: 2018/09/09 23:27:08 by jeguglie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c);
-
-void	print_sudoku(char *tab)
+int		match(char *s1, char *s2)
 {
-	int i;
-
-	i = -1;
-	while (tab[++i])
+	if (!*s1 && !*s2)
+		return (1);
+	else if (*s2 == '*')
 	{
-		ft_putchar(tab[i]);
-		if (i < 8)
-			write(1, " ", 1);
+		if (!*s1)
+			return (match(s1, s2 + 1));
+		else
+			return (match(s1 + 1, s2)) || (match(s1, s2 + 1));
 	}
-	write(1, "\n", 1);
+	else if (*s1 == *s2)
+		return (match(s1 + 1, s2 + 1));
+	else
+		return (0);
 }

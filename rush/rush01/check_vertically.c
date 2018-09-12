@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_sudoku.c                                     :+:      :+:    :+:   */
+/*   check_vertically.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeguglie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/09 12:28:53 by jeguglie          #+#    #+#             */
-/*   Updated: 2018/09/09 12:28:55 by jeguglie         ###   ########.fr       */
+/*   Created: 2018/09/09 12:27:37 by jeguglie          #+#    #+#             */
+/*   Updated: 2018/09/09 12:27:40 by jeguglie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c);
-
-void	print_sudoku(char *tab)
+int		check_vertically(char **tab)
 {
+	int a;
+	int c;
 	int i;
 
-	i = -1;
-	while (tab[++i])
+	a = -1;
+	c = -1;
+	i = c + 1;
+	while (++a < 9)
 	{
-		ft_putchar(tab[i]);
-		if (i < 8)
-			write(1, " ", 1);
+		while (++c < 9)
+		{
+			while (++i < 9)
+			{
+				if (tab[c][a] == tab[i][a] &&
+						(tab[c][a] >= '0' && tab[i][a] <= '9'))
+					return (0);
+			}
+			i = c + 1;
+		}
+		c = 0;
 	}
-	write(1, "\n", 1);
+	return (1);
 }
+
+// Check si le meme nombre est present sur la meme colonne.
+// Retourne 1 si elle trouve aucune erreur.

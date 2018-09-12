@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_sudoku.c                                     :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeguglie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/09 12:28:53 by jeguglie          #+#    #+#             */
-/*   Updated: 2018/09/09 12:28:55 by jeguglie         ###   ########.fr       */
+/*   Created: 2018/09/05 04:26:53 by jeguglie          #+#    #+#             */
+/*   Updated: 2018/09/11 02:34:19 by jeguglie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_putchar(char c);
-
-void	print_sudoku(char *tab)
+int		*ft_range(int min, int max)
 {
+	int *tab;
 	int i;
 
-	i = -1;
-	while (tab[++i])
+	i = 0;
+	if (min >= max)
+		return (0);
+	if (!(tab = (int *)malloc(sizeof(*tab) * (max - min))))
+		return (0);
+	while (min < max)
 	{
-		ft_putchar(tab[i]);
-		if (i < 8)
-			write(1, " ", 1);
+		tab[i] = min;
+		i++;
+		min++;
 	}
-	write(1, "\n", 1);
+	return (tab);
 }

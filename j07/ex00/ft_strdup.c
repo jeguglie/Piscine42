@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_sudoku.c                                     :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeguglie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/09 12:28:53 by jeguglie          #+#    #+#             */
-/*   Updated: 2018/09/09 12:28:55 by jeguglie         ###   ########.fr       */
+/*   Created: 2018/09/05 01:07:19 by jeguglie          #+#    #+#             */
+/*   Updated: 2018/09/11 02:41:15 by jeguglie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_putchar(char c);
-
-void	print_sudoku(char *tab)
+char	*ft_strdup(char *src)
 {
-	int i;
+	char	*dest;
+	int		i;
 
-	i = -1;
-	while (tab[++i])
+	i = 0;
+	if (src == 0)
+		return (0);
+	while (src[i])
 	{
-		ft_putchar(tab[i]);
-		if (i < 8)
-			write(1, " ", 1);
+		i++;
 	}
-	write(1, "\n", 1);
+	if (!(dest = (char*)malloc(sizeof(*dest) * (i + 1))))
+		return (0);
+	i = -1;
+	while (src[++i])
+		dest[i] = src[i];
+	dest[i] = '\0';
+	return (dest);
 }

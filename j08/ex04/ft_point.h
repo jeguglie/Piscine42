@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_sudoku.c                                     :+:      :+:    :+:   */
+/*   ft_point.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeguglie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/09 12:28:53 by jeguglie          #+#    #+#             */
-/*   Updated: 2018/09/09 12:28:55 by jeguglie         ###   ########.fr       */
+/*   Created: 2018/09/11 07:30:57 by jeguglie          #+#    #+#             */
+/*   Updated: 2018/09/12 13:36:08 by jeguglie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef FT_POINT_H
+# define FT_POINT_H
 
-void	ft_putchar(char c);
-
-void	print_sudoku(char *tab)
+typedef struct	s_point
 {
-	int i;
+	int x;
+	int y;
+}				t_point;
 
-	i = -1;
-	while (tab[++i])
-	{
-		ft_putchar(tab[i]);
-		if (i < 8)
-			write(1, " ", 1);
-	}
-	write(1, "\n", 1);
-}
+#endif

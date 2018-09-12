@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_sudoku.c                                     :+:      :+:    :+:   */
+/*   check_square.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeguglie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/09 12:28:53 by jeguglie          #+#    #+#             */
-/*   Updated: 2018/09/09 12:28:55 by jeguglie         ###   ########.fr       */
+/*   Created: 2018/09/09 12:26:35 by jeguglie          #+#    #+#             */
+/*   Updated: 2018/09/09 12:26:38 by jeguglie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c);
-
-void	print_sudoku(char *tab)
+int		check_square(char *tab)
 {
 	int i;
+	int j;
 
-	i = -1;
-	while (tab[++i])
+	j = 0;
+	i = j + 1;
+	while (tab[j])
 	{
-		ft_putchar(tab[i]);
-		if (i < 8)
-			write(1, " ", 1);
+		while (tab[i])
+		{
+			if (tab[j] == tab[i] && (tab[j] >= '0' && tab[i] <= '9'))
+				return (0);
+			i++;
+		}
+		j++;
+		i = j + 1;
 	}
-	write(1, "\n", 1);
+	return (1);
 }
+
+// Compare un element avec tout le reste de la chaine.
+// Si aucun meme nombre est trouvé, cette fonction compare l'élement suivant avec le reste de la chaîne et ainsi de suite...
